@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<title>羅宇陽的個人履歷</title>
+	<meta charset="utf-8">
+	<style>
+		.cc,
+		.wrap,
+		.num {
+			width: 140px;
+			height: 140px;
+			border-radius: 50%;
+		}
+
+		.wrap {
+			position: relative;
+			border: 10px solid white;
+			box-sizing: border-box;
+		}
+
+		.cc {
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			box-sizing: border-box;
+		}
+
+		.cc div {
+			width: 140px;
+			height: 140px;
+			position: absolute;
+			box-sizing: border-box;
+			border-radius: 50%;
+		}
+
+		.num {
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			line-height: 140px;
+			text-align: center;
+			font-size: 30px;
+		}
+
+		.pal {
+			clip: rect(0, 70px, 140px, 0);
+			border: 10px solid #fc634f;
+		}
+
+		.par {
+			clip: rect(0, 140px, 140px, 70px);
+			border: 10px solid #fc634f;
+		}
+
+		.timeline {
+			position: relative;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.timeline::after {
+			content: '';
+			position: absolute;
+			width: 5px;
+			background-color: white;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			margin-left: -3px;
+		}
+
+		.container {
+			padding: 10px 40px;
+			position: relative;
+			width: 50%;
+		}
+
+		.container::after {
+			content: '';
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			right: -17px;
+			background-color: white;
+			border: 4px solid #f5851c;
+			top: 16px;
+			border-radius: 50%;
+			z-index: 1;
+		}
+
+		.left {
+			left: -10%;
+		}
+
+		.right {
+			left: 50%;
+		}
+
+		.left::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			right: 30px;
+			border: medium solid white;
+			border-width: 10px 0 10px 10px;
+			border-color: transparent transparent transparent white;
+		}
+
+		.right::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			left: 30px;
+			border: medium solid white;
+			border-width: 10px 10px 10px 0;
+			border-color: transparent white transparent transparent;
+		}
+
+		.right::after {
+			left: -16px;
+		}
+
+		.content {
+			padding: 20px 30px;
+			background-color: white;
+			position: relative;
+			border-radius: 6px;
+		}
+
+		@media screen and (max-width: 600px) {
+
+			.timeline::after {
+				left: 30px;
+			}
+
+			.container {
+				width: 50%;
+				padding-left: 70px;
+				padding-right: 25px;
+			}
+
+			.container::before {
+				left: 60px;
+				border: medium solid white;
+				border-width: 10px 10px 10px 0;
+				border-color: transparent white transparent transparent;
+			}
+
+			.left::after,
+			.right::after {
+				left: 15px;
+			}
+
+			.right {
+				left: 0%;
+			}
+		}
+
+		.content {
+			padding-left: 20px;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 25px;
+			transition: 0.4s;
+		}
+
+		.active,
+		.content:hover {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			opacity: 70%;
+		}
+
+		.content:after {
+			content: '\002B';
+			color: #777;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+		.active:after {
+			content: "\2212";
+		}
+
+		.panel {
+			padding: 0 18px;
+			background-color: rgb(220, 218, 253);
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+			font-family: 'Times New Roman', Times, serif;
+		}
+
+		body {
+			background-image: url(img/108.06.jpg);
+		}
+
+		.total {
+			background-color: #fdd6a2;
+			margin: auto;
+			width: 80%;
+			border-radius: 10px;
+			margin-top: 20px;
+		}
+
+		.img_type1,
+		.img_type2,
+		.img_type3,
+		.img_type4,
+		.img_type5,
+		.img_type6 {
+			transition: 1s ease;
+		}
+
+		.img_type1:hover {
+			/*這可以向左轉向45度*/
+			margin-bottom: 10px;
+			margin-top: 30px;
+			-webkit-transform: rotate(750deg);
+			opacity: 80%;
+			width: 50px;
+			height: 50px;
+		}
+
+		.img_type2:hover {
+			/*這可以向左轉向45度*/
+			margin-bottom: 10px;
+			margin-top: 10px;
+			-webkit-transform: rotate(360deg);
+			width: 350px;
+			height: 350px;
+		}
+
+		.img_type3:hover {
+			/*這可以向左轉向45度*/
+			width: 20%;
+			height: 20%;
+		}
+
+		.img_type4 {
+			width: 60%;
+		}
+
+		.img_type4:hover {
+			/*這可以向左轉向45度*/
+			width: 80%;
+			height: 80%;
+		}
+
+		.img_type5 {
+			width: 30%;
+		}
+
+		.img_type5:hover {
+			/*這可以向左轉向45度*/
+			width: 50%;
+			height: 50%;
+		}
+
+		.img_type6 {
+			width: 15%;
+		}
+
+		.img_type6:hover {
+			/*這可以向左轉向45度*/
+			width: 30%;
+			height: 30%;
+		}
+
+		.div1 {
+			opacity: 50%;
+		}
+
+		.div1:hover {
+			opacity: 100%;
+
+		}
+
+		.word_type1,
+		.word_type2 {
+			transition: 1s ease;
+		}
+
+		.word_type1:hover {
+			/*這可以控制模式1的文字透明度*/
+			opacity: 65%;
+			margin-bottom: 20px;
+			margin-top: 20px;
+			-webkit-transform: rotate(8deg);
+		}
+
+		.word_type2:hover {
+			/*這可以控制模式2的文字透明度*/
+			opacity: 65%;
+			margin-bottom: 20px;
+			margin-top: 20px;
+			-webkit-transform: rotate(-8deg);
+		}
+
+		.word_type3:hover {
+			/*這可以控制模式3的文字透明度*/
+			opacity: 40%;
+		}
+	</style>
+</head>
+
+<body>
+	<div align="center" style="padding-top: 20px;">
+		<img class="img_type3" src="img/我的個人履歷網頁.jpg" style="height: 120px; width: 800px;">
+	</div>
+	<div class="total">
+		<div class="div1">
+			<div align="center" style="padding-top: 40px;">
+				<img src="img/lo_yong.jpg" style="height: 300px; width: 300px;" class="img_type2">
+			</div>
+			<div align=" center">
+				<img class="img_type3" src="img/name.jpg" width="200px">
+				<a href="mailto:j38289754j@gmail.com"><img class="img_type1" src="img/gmail.jpg" height="40px" width="40px"></a>
+				<a href="https://www.facebook.com/profile.php?id=100003263812817" target="_blank"><img class="img_type1"
+						src="img/fb.jpg" style="padding-left: 8px;" height="40px" width="40px"></a>
+				<a href="https://www.instagram.com/998_lo_yong/" target="blank"><img class="img_type1" src="img/ig.jpg"
+						style="padding-left: 8px;" height="40px" width="40px"></a>
+			</div>
+			<hr color="#FFFFFF" style="width: 35%;">
+			<div align="center" class="word_type1" style="font-size: 28px; padding-bottom: 5px;">
+				<h>中原大學 電子三丙 跆拳道校隊</h>
+			</div>
+			<div align="center" class="word_type2" style="font-size: 28px; padding-bottom: 5px;">
+				<h>出生年月日:1999/10/20</h>
+			</div>
+			<div align="center" class="word_type1" style="font-size:28px; padding-bottom: 5px;">
+				<h>興趣:運動(跆拳道最擅長)、影片剪輯、音樂饒舌欣賞</h>
+			</div>
+			<div align="center" class="word_type2" style="font-size:28px; padding-bottom: 5px;">
+				<h>學歷:北湖國小>新屋國中>中壢高商>中原大學</h>
+			</div>
+			<hr color="#FFFFFF" style="width: 57%;">
+			<div align="center">
+				<img class="img_type4" src="img/座右銘.jpg">
+			</div>
+			<hr color="#FFFFFF" style="width: 75%;">
+		</div>
+		<div class="div1">
+			<div align="center">
+				<img class="img_type5" src="img/已掌握技能.jpg">
+			</div>
+			<div align="center" style="padding-top: 30px;">
+				<table>
+					<tr>
+						<td>
+							<div id="java"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">java</p>
+						</td>
+						<td style="padding-left: 35px;">
+							<div id="java script"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">java script</p>
+						</td>
+						<td style="padding-left: 35px">
+							<div id="html"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">html</p>
+						</td>
+						<td style="padding-left: 35px">
+							<div id="css"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">css</p>
+						</td>
+						<td style="padding-left: 35px;">
+							<div id="c#"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">C#</p>
+						</td>
+						<td style="padding-left: 35px;">
+							<div id="python"></div>
+							<p class="word_type3" style="text-align: center; font-size: 32px;">python</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<hr color="#E2FDFF" style="width: 80%;">
+		</div>
+		<div class="div1" style="padding-bottom: 40px;">
+			<div align="center">
+				<img class="img_type6" src="img/經歷.jpg" width="150px">
+			</div>
+			<div class="timeline">
+				<div class="container left">
+					<button class="content">2021</button>
+					<div class="panel">
+						<div class="word_type1">
+							<p>今年也到了5月了,一切都算順利的運行著</p>
+						</div>
+						<div class="word_type1">
+							<p>在當隊長期間我學到了很多事情是學校部會去交的,例如:</p>
+						</div>
+						<div class="word_type1">
+							<p>幫25個人訂房7天6夜、租汽車、訂高鐵的5折票、噴漆的模板製作,最最重要的是學會怎麼有效的分配事情和時間。</p>
+						</div>
+						<div class="word_type1">
+							<p>在今年的5/11日,我突破層層難關,拿到了全國大學運動會甲組(公開組)的第二名,成功為校爭光,也讓我非常有成就感,在這之後可以把生活的重心更多的放在課業上,好好的精進自己的程式能力了。</p>
+						</div>
+					</div>
+				</div>
+				<div class="container right">
+					<button class="content">2020</button>
+					<div class="panel">
+						<div class="word_type1">
+							<p>這一年的我接任校隊隊長,並且也接觸到多媒體和網路程式設計HTML CSS JAVA等程式語言</p>
+						</div>
+						<div class="word_type1">
+							<p>起初有因為校隊隊長壓力太大導致章節小考成績有點不太理想</p>
+						</div>
+						<div class="word_type1">
+							<p>但在後來和隊員們的磨合期順利度過後,大家各司其職,我也能有比較多的時間來讀書了</p>
+						</div>
+						<div class="word_type1">
+							<p>當年的全大運(大學規模最大的比賽)很可惜的籤運不佳,在第一場便遇到了國立體大的選手,未能拿下好成績</p>
+						</div>
+						<div class="word_type1">
+							<p>有參加中原五燈獎,上台演唱的是:楊和蘇的命不由天</p>
+						</div>
+					</div>
+				</div>
+				<div class="container left">
+					<button class="content">2019</button>
+					<div class="panel">
+						<div class="word_type1">
+							<p>大二後接觸電子學和電路學開始發現電子工程學系所學習之知識並不是我所嚮往的</p>
+						</div>
+						<div class="word_type1">
+							<p>於是在繼續選修資管系課程的同時也退選了不少電子系的課</p>
+						</div>
+						<div class="word_type1">
+							<p>這一年的轉系卻因資管系甲乙班皆無名額而無法成功轉入,這件事對我的打擊算蠻大的</p>
+						</div>
+						<div class="word_type1">
+							<p>在校隊裡我接任副隊長,帶領團隊在決賽打贏先前打贏陸軍專校的輔仁大學隊伍多奪下當年全國武鬥季跆拳道錦標賽的團體第一名,並獲的當年最強大學的名號</p>
+						</div>
+						<div class="word_type1">
+							<p>有參加中原五燈獎,上台演唱的是:Jony J的不用去猜</p>
+						</div>
+					</div>
+				</div>
+				<div class="container right">
+					<button class="content">2018</button>
+					<div class="panel">
+						<div class="word_type1">
+							<p>考入中原大學跆拳道運動績優生並就讀電子系</p>
+						</div>
+						<div class="word_type1">
+							<p>起初因高中就想讀資管系了,所以大一就有打算轉系</p>
+						</div>
+						<div class="word_type1">
+							<p>再額外加選資管系課的同時,體育好跑得快的點也有被學長邀請跑小運大隊接力</p>
+						</div>
+						<div class="word_type1">
+							<p>當時很喜歡電子系的環境，和同學相處也都很合得來,也因此想和他們一起繼續就讀電子系</p>
+						</div>
+						<div class="word_type1">
+							<p>有參加中原五燈獎,上台演唱的是:楊和蘇的兔八哥</p>
+						</div>
+					</div>
+				</div>
+				<div class="container left">
+					<button class="content">2017</button>
+					<div class="panel">
+						<div class="word_type1">
+							<p>還是高三生的我是中壢高商國貿科的學生</p>
+						</div>
+						<div class="word_type1">
+							<p>在高三的計算機概論課程中接觸到VB對此很感興趣</p>
+						</div>
+						<div class="word_type1">
+							<p>和老師討論後有想去資管系就讀的想法</p>
+						</div>
+						<div class="word_type1">
+							<p>另外我在今年奪獲桃園市市長盃跆拳道錦標賽的亞軍和全中錦的第五名</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer align="center">
+		<p style="color:#7782e2;">版權所有@2021,羅宇陽</p>
+	</footer>
+
+	<script>
+		var acc = document.getElementsByClassName("content");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.maxHeight) {
+					panel.style.maxHeight = null;
+				} else {
+					panel.style.maxHeight = panel.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
+
+	<script type="text/javascript">
+		function Yuan(id, num) {
+			this.box = document.getElementById(id); //获取节点
+			this.box.className = 'wrap';
+
+			//创建节点cc
+			this.cc = document.createElement("div");
+			this.cc.className = "cc";
+			this.box.appendChild(this.cc);
+
+			//创建cc的子节点left
+			this.left = document.createElement("div");
+			this.left.className = "pal";
+			this.cc.appendChild(this.left);
+
+			//创建cc的子节点right
+			this.right = document.createElement("div");
+			this.right.className = "par";
+			this.cc.appendChild(this.right);
+
+			//创建节点num
+			this.num = document.createElement("div");
+			this.num.className = "num";
+			this.box.appendChild(this.num);
+			this.num.innerHTML = '<span id="">' + num + '</span>%';
+
+			this.jz(num);
+		}
+
+		Yuan.prototype.jz = function (num) {
+			var i = 0;
+			var that = this;
+			var int = setInterval(function () {
+				that.gx(num / 10 * i);
+				i++;
+				if (i > 10) {
+					clearInterval(int)
+				}
+			}, 50);
+		}
+
+		Yuan.prototype.gx = function (n) {
+
+			if (n <= 50) {
+				this.right.style.display = 'none';
+				this.cc.style.clip = 'rect(0, 140px, 140px, 70px)';
+			} else {
+				this.right.style.display = 'block';
+				this.cc.style.clip = 'rect(auto, auto, auto, auto)';
+			}
+			this.left.style.transform = 'rotate(' + n * 360 / 100 + 'deg)';
+
+		}
+
+		var box1 = new Yuan('java', 50);
+		var box4 = new Yuan('java script', 50);
+		var box2 = new Yuan('html', 60);
+		var box3 = new Yuan('css', 60);
+		var box = new Yuan('c#', 70);
+		var box5 = new Yuan('python', 75);
+	</script>
+
+
+</body>
+
+</html>
